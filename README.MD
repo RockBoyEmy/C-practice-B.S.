@@ -2,4 +2,6 @@
 Bjarne Stroupstroup's Practice and Programming book
 
 Exercises from the various chapters
+Let's have fun ;)
+
 
