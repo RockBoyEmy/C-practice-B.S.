@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-int main1()
+int main()
 {
 	double var1, var2, result = 0;
 	string operation = "";
