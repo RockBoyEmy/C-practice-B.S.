@@ -35,6 +35,20 @@ int main()
 	{
 		cout << names[i] << " " << ages[i] << endl;
 	}
+	
+	cout << "\nInsert a name that you want to check: ";
+	cin >> name;
+	for (int i = 0; i < names.size(); i++)
+	{
+		if (name == names[i])
+		{
+			cout << "Found the name you were looking for. It's in position " << i << endl;
+		}
+		else
+		{
+			cout << "Name not found" << endl;
+		}
+	}
 
 	return 0;
 }
