@@ -32,12 +32,12 @@ void quadratic_equation(double a, double b, double c)
 	else
 	{
 		//calculates discriminant, won't be stored as a number if result is smaller than 0 (doesn't belong to R domain)
-		double eqZero = pow(b, 2.0) - (4 * b*c);
+		double eqZero = pow(b, 2.0) + (-4) * a*c;
 		if (eqZero>=0)
 		{
 			double x1, x2 = 0;
-			x1 = ((-b) + sqrt(pow(b, 2.0) - (4 * a*c))) / 2 * a;
-			x2 = ((-b) - sqrt(pow(b, 2.0) - (4 * a*c))) / 2 * a;
+			x1 = ((-b) + sqrt(pow(b, 2.0) + (-4) * a*c)) / 2 * a;
+			x2 = ((-b) - sqrt(pow(b, 2.0) + (-4) * a*c)) / 2 * a;
 			if (x1 == x2)
 			{
 				cout << "The equation roots are identical and are equal to " << x1 << endl;
