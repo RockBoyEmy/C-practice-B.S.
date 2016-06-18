@@ -1,4 +1,5 @@
 #include "std_lib_facilities.h"
+#include "Windows.h"
 
 bool check_identicality(vector<int> guessing, vector<int> guessed);
 int check_bulls(vector<int> guessing, vector<int> guessed);
@@ -7,8 +8,15 @@ int check_cows(vector<int> guessing, vector<int> guessed);
 int main()
 try {
 	int bulls, cows = 0;
-	vector<int> guessingNo = { 2, 5, 9, 5 }; 
+	vector<int> guessingNo(4); 
 	vector<int> guessedNo(4, 0); //vector of 4 zeroes
+	int rand = 0;
+	for (int r = 0; r < guessingNo.size(); r++)
+	{
+		//populating the vector with random numbers instead of hardcoding them
+		rand = randint(9);
+		guessingNo[r] = rand;
+	}
 	bool identical = check_identicality(guessingNo, guessedNo);
 	while (!identical)
 	{
