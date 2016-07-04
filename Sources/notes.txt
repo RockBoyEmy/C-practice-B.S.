@@ -1,0 +1,5 @@
+most of the programs are using a header file called "std_library_faciliies.h"
+which is a simplification of the "#include" files needed for the various programs
+done by Bjarne Stroupstroup to help novice programmers and learners.
+
+Won't obviously work if the code is taken and used elsewhere as is.
