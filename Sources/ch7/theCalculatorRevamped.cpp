@@ -82,6 +82,10 @@ double primary() {
 		}
 	case '8':				//we use '8' to represent a number
 		return t.value;		//return the number's value
+	case '-':
+		return -primary();
+	case '+':
+		return primary();
 	default:
 		error("primary expected");
 	}
@@ -161,12 +165,12 @@ try {
 catch (exception& e)
 {
 	cerr << e.what() << endl;
-	keep_window_open();
+	keep_window_open("~~");
 	return 1;
 }
 catch (...)
 {
 	cerr << "unknown exception\n";
-	keep_window_open();
+	keep_window_open("~~");
 	return 2;
 }
