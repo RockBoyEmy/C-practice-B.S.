@@ -161,25 +161,24 @@ double expression()
 		}
 	}
 }
+void calculate()		//expression evaluation loop
+{
+	while (cin)
+	{
+		cout << prompt;
+		Token t = ts.get();
+		while (t.kind == print) t = ts.get();	//first discard all "prints"
+		if (t.kind == quit)	return;
+		ts.putback(t);
+		cout << result << expression() << endl;
+	}
+}
 
 int main()
 try {
-	while (cin) {
-		double val = 0;
-		while (cin)
-		{
-			cout << prompt;
-			Token t = ts.get();
-			while (t.kind == print) t = ts.get();
-			if (t.kind == quit) {
-				keep_window_open();
-				return 0;
-			}
-			ts.putback(t);
-			cout << result << expression() << endl;
-		}
-	}
-	keep_window_open();
+	calculate();
+	keep_window_open();	//cope with Windows console mode
+	return 0;
 }
 catch (exception& e)
 {
