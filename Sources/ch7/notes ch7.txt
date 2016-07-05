@@ -1,0 +1,6 @@
+the calculator revamped is a very good representation of how an
+initially thought "over" project can then be updated with not only new features,
+but also applying some code cleaning and comments.
+
+Thus, have a look at all the commits with the things added and the ones changed
+to learn and get an idea of how to clean and better the code everytime there's the need.

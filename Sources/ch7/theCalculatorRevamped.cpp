@@ -1,6 +1,10 @@
 //the calculator - final version directly (probably)
 #include "std_lib_facilities.h"
 
+const char number = '8';	//t.kind==number means that t is a number token
+const char quit = 'q';		//t.kind==quit means that t is a quit Token
+const char print = ';';		//t.kind==print means that t is a print Token
+
 class Token {
 public:
 	char kind;		//what kind of token
@@ -47,7 +51,7 @@ Token Token_stream::get()
 		cin.putback(ch);		//put digit back into the input stream
 		double val;
 		cin >> val;
-		return Token('8', val); //let '8' represent "a number"
+		return Token(number, val);
 	}
 	default:
 		error("Bad token");
@@ -80,7 +84,7 @@ double primary() {
 			}
 			return d;
 		}
-	case '8':				//we use '8' to represent a number
+	case number:
 		return t.value;		//return the number's value
 	case '-':
 		return -primary();
@@ -163,8 +167,8 @@ try {
 		while (cin)
 		{
 			Token t = ts.get();
-			while (t.kind == ';') t = ts.get();	//eat ';'
-			if (t.kind == 'q') {
+			while (t.kind == print) t = ts.get();
+			if (t.kind == quit) {
 				keep_window_open();
 				return 0;
 			}
