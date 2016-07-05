@@ -4,6 +4,8 @@
 const char number = '8';	//t.kind==number means that t is a number token
 const char quit = 'q';		//t.kind==quit means that t is a quit Token
 const char print = ';';		//t.kind==print means that t is a print Token
+const string prompt = ">";
+const string result = "=";	//used to indicate that what follows is a result
 
 class Token {
 public:
@@ -166,6 +168,7 @@ try {
 		double val = 0;
 		while (cin)
 		{
+			cout << prompt;
 			Token t = ts.get();
 			while (t.kind == print) t = ts.get();
 			if (t.kind == quit) {
@@ -173,7 +176,7 @@ try {
 				return 0;
 			}
 			ts.putback(t);
-			cout << "=" << expression() << endl;
+			cout << result << expression() << endl;
 		}
 	}
 	keep_window_open();
