@@ -39,6 +39,7 @@ Token Token_stream::get()
 	{
 	case ';':	//for "print"
 	case 'q':	//for "quit"
+	case '!':
 	case '{': case '}': case '(': case ')': case '+': case '-': case '*': case '/':
 		return Token(ch);	//let each character represent itself
 	case '.':
@@ -64,6 +65,7 @@ void Token_stream::putback(Token t)
 }
 
 Token_stream ts;		//provides get() and putback()
+double fact(double f);	//calculates the factorial of a given number
 double expression();	//declaration so that primary() can call expression()
 
 double primary() {
@@ -90,8 +92,18 @@ double primary() {
 		}
 		return d;
 	}
-	case '8':				//we use '8' to represent a number
-		return t.value;		//return the number's value
+	case '8':	//we use '8' to represent a number
+	{
+		double d = t.value;
+		t = ts.get();	//creates different token to hold the factorial sign
+		if (t.kind == '!')	//checks for a factorized number
+		{
+			d = fact(d); //and does the calculation if yes
+			t = ts.get(); //then skips the factorial sign
+		}
+		ts.putback(t);
+		return d;	//return the number's value
+	}
 	default:
 		error("primary expected");
 	}
@@ -125,6 +137,13 @@ double term()
 			return left;
 		}
 	}
+}
+double fact(double f)
+{
+	int ret = 1;
+	for (int i = 1; i <= f; ++i)
+		ret *= i;
+	return (double)ret;
 }
 double expression()
 {
