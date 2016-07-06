@@ -21,6 +21,7 @@ public:
 	Token_stream();			//make a Token_stream that reads from cin
 	Token get();			//get a Token
 	void putback(Token t);	//put a Token back
+	void ignore(char c);	//discard characters up to and including c
 
 private:
 	bool full;		//is there a Token in the buffer?
@@ -74,10 +75,30 @@ void Token_stream::putback(Token t)
 	buffer = t;		//copy t to buffer
 	full = true;	//buffer is now full
 }
+void Token_stream::ignore(char c)
+	//c represents the Token kind
+{
+	//first look in buffer
+	if (full && c == buffer.kind)
+	{
+		full = false;
+		return;
+	}
+	full = false;
+
+	//now search input
+	char ch = 0;
+	while (cin >> ch)
+		if (ch == c) return;
+}
 
 Token_stream ts;		//provides get() and putback()
 double expression();	//declaration so that primary() can call expression()
 
+void clean_up_mess()
+{
+	ts.ignore(print);
+}
 double primary() {
 	Token t = ts.get(); //aici era inainte doar get_token()
 	switch (t.kind)
@@ -170,13 +191,17 @@ double expression()
 void calculate()		//expression evaluation loop
 {
 	while (cin)
-	{
+	try {
 		cout << prompt;
 		Token t = ts.get();
 		while (t.kind == print) t = ts.get();	//first discard all "prints"
 		if (t.kind == quit)	return;
 		ts.putback(t);
 		cout << result << expression() << endl;
+	}
+	catch (exception& e) {
+		cerr << e.what() << endl;	//write error message
+		clean_up_mess();
 	}
 }
 
