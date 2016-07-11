@@ -2,19 +2,22 @@
 //one creates another vector for it, the other makes modifications on same vector
 #include "std_lib_facilities.h"
 
+void populateVector(string vName, vector<int>& theVector);
 void printVector(string s, const vector<int>& v);
 vector<int> swapByValue(const vector<int>& v);
 void swapByReference(vector<int>& v);
 
 int main()
-{
-	vector<int> vec1 = { 8, 6, 1, 3, 2, 9 };
+try {
+	vector<int> vec1;
+	populateVector("vec1", vec1);
 	printVector("vec1: ", vec1);
 	cout << endl;
 	vector<int> vec3 = swapByValue(vec1);
 	printVector("vec1 inverted: ", vec3);
 	cout << endl;
-	vector<int> vec2 = { 4, 7, 2, 0, 8, 1 };
+	vector<int> vec2;
+	populateVector("vec2", vec2);
 	printVector("vec2: ", vec2);
 	cout << endl;
 	swapByReference(vec2);
@@ -22,6 +25,31 @@ int main()
 	cout << endl;
 
 	return 0;
+}
+catch (exception& e)
+{
+	cout << e.what() << endl;
+}
+
+void populateVector(string vName, vector<int>& theVector)
+{
+	cout << "Populate " << vName << ", insert only integers or press q to stop:" << endl;;
+	for (int i = 0; ; i++)
+	{
+		char ch;
+		cin >> ch;
+		if (isdigit(ch))
+		{
+			cin.putback(ch);
+			int number = 0;
+			cin >> number;
+			theVector.push_back(number);
+		}
+		else if (ch == 'q')
+			break;
+		else
+			error("invalid input");
+	}
 }
 
 void printVector(string s, const vector<int>& v)
