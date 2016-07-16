@@ -2,7 +2,7 @@
 
 const Book & default_book()
 {
-	static const Book b(ISBN(), "", "", 0, false);
+	static const Book b(ISBN(), "", "", Book::fiction, 0, false);
 	return b;
 }
 
@@ -22,13 +22,14 @@ Book::Book()
 	:isbn_no(default_book().get_isbn()),
 	title(default_book().get_title()),
 	auth_name(default_book().get_author()),
+	genre(default_book().get_genre()),
 	copyright_date(default_book().get_c_date()),
 	is_checked_out(default_book().checked_out())
 {
 }
 
-Book::Book(ISBN i, string title, string author, int c_date, bool checked_out)
-	:isbn_no(i), title(title), auth_name(author), 
+Book::Book(ISBN i, string title, string author, Genre gen, int c_date, bool checked_out)
+	:isbn_no(i), title(title), auth_name(author), genre(gen),
 	copyright_date(c_date), is_checked_out(checked_out)
 {
 }
