@@ -28,3 +28,6 @@ private:
 };
 
 const Book& default_book();
+bool operator==(const Book& b1, const Book& b2);
+bool operator!=(const Book& b1, const Book& b2);
+ostream& operator<<(ostream& os, const Book& b);

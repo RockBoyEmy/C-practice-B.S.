@@ -32,3 +32,19 @@ Book::Book(ISBN i, string title, string author, int c_date, bool checked_out)
 	copyright_date(c_date), is_checked_out(checked_out)
 {
 }
+
+bool operator==(const Book& b1, const Book& b2)
+{
+	return (b1.get_isbn() == b2.get_isbn());
+}
+
+bool operator!=(const Book& b1, const Book& b2)
+{
+	return !(b1 == b2);
+}
+
+ostream & operator<<(ostream & os, const Book & b)
+{
+	os << b.get_title() << '\n' << b.get_author() << '\n' << b.get_isbn() << endl;
+	return os;
+}

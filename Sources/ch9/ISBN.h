@@ -15,3 +15,5 @@ struct ISBN {
 
 bool is_isbn(int n1, int n2, int n3, char x);
 const ISBN& default_isbn();
+bool operator==(const ISBN& i1, const ISBN& i2);
+ostream& operator<<(ostream& os, const ISBN& i);
