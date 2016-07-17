@@ -23,9 +23,9 @@ namespace Chrono {
 		int year() const { return y; }
 
 		// modifying operations:
-		void add_day(int n);
-		void add_month(int n);
-		void add_year(int n);
+		//void add_day(int n);
+		//void add_month(int n);
+		//void add_year(int n);
 	private:
 		int y;
 		Month m;

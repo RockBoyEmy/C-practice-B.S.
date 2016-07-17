@@ -31,28 +31,28 @@ namespace Chrono {
 
 	//------------------------------------------------------------------------------
 
-	void Date::add_day(int n)
+	/*void Date::add_day(int n)
 	{
 		// ...
-	}
+	}*/
 
 	//------------------------------------------------------------------------------
 
-	void Date::add_month(int n)
+	/*void Date::add_month(int n)
 	{
 		// ...
-	}
+	}*/
 
 	//------------------------------------------------------------------------------
 
-	void Date::add_year(int n)
+	/*void Date::add_year(int n)
 	{
 		if (m == feb && d == 29 && !leapyear(y + n)) {    // beware of leap years!
 			m = mar;                                // use March 1 instead of February 29
 			d = 1;
 		}
 		y += n;
-	}
+	}*/
 
 	//------------------------------------------------------------------------------
 
@@ -84,7 +84,7 @@ namespace Chrono {
 	// a leap year is disivible by 4, but not by 100, except if it is divisible by 400
 	bool leapyear(int y)
 	{
-		// ... 
+		return ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0);
 	}
 
 	bool operator==(const Date& a, const Date& b)
@@ -125,19 +125,19 @@ namespace Chrono {
 		sunday, monday, tuesday, wednesday, thurstday, friday, saturday
 	};
 
-	Day day_of_week(const Date& d)
+	/*Day day_of_week(const Date& d)
 	{
 		// ...
-	}
+	}*/
 
-	Date next_Sunday(const Date& d)
+	/*Date next_Sunday(const Date& d)
 	{
 		// ...
-	}
+	}*/
 
-	Date next_weekday(const Date& d)
+	/*Date next_weekday(const Date& d)
 	{
 		// ...
-	}
+	}*/
 
 } // Chrono

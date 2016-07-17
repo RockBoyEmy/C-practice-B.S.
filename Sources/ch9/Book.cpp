@@ -8,13 +8,13 @@ const Book & default_book()
 
 void Book::check_in()
 {
-	if (!checked_out()) error("book already checked-in");
+	if (!checked_out()) error("Book::check_in(): book already checked-in");
 	is_checked_out = false;
 }
 
 void Book::check_out()
 {
-	if (checked_out()) error("book already cheked-out");
+	if (checked_out()) error("Book::check_out(): book already cheked-out");
 	is_checked_out = true;
 }
 
